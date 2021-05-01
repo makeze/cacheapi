@@ -4,10 +4,9 @@ import {app} from './app';
 
 const start = async () => {
     let MONGO_URI = 'mongodb://127.0.0.1:27017/cacheapi';
-    let PORT:number = 3000;
+    let PORT = 3000;
 
     if (!process.env.MONGO_URI) {
-        // throw new Error('Mongo connection uri is not defined');
         console.log(`Mongo connection uri is not provided using: ${MONGO_URI}`);
     } else {
         MONGO_URI = process.env.MONGO_URI;

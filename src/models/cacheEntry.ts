@@ -44,13 +44,11 @@ cacheEntrySchema.statics.cacheHit = () => {
     return console.log('Cache hit');
 };
 
-cacheEntrySchema.statics.isFull = async () => {
-    let entryLimit = 10;
-    let cacheEntries = await CacheEntry.find();
-    console.log(cacheEntries.length);
-    console.log(entryLimit);
-    return (cacheEntries.length >= entryLimit);
-}
+/*cacheEntrySchema.methods.expired = function () {
+    const ttl = 10 * 1000; // converting to milliseconds
+    const timeNow = new Date().getTime();
+    return ((this.updatedAt.getSeconds() + ttl) < timeNow);
+}*/
 
 cacheEntrySchema.pre('save', function(next) {
     const CACHE_ENTRY_LIMIT = 10;

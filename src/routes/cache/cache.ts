@@ -1,4 +1,4 @@
-import express, {Request, response, Response} from 'express';
+import express, {Request, Response} from 'express';
 import {randomBytes} from 'crypto';
 
 import {CacheEntry} from '../../models/cacheEntry';
@@ -25,7 +25,6 @@ router.get('/api/cache/:cacheKey',   async (req: Request, res: Response) => {
 
     if (!cacheEntry) {
         CacheEntry.cacheMiss();
-
         cacheEntry = CacheEntry.build({
             cacheKey: cacheKey,
             cacheData: randomBytes(4).toString('hex')
